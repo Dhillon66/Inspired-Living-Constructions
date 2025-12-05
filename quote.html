@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Quote | Inspired Living Constructions</title>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body data-page="quote">
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/images/ilc-logo.png" alt="Inspired Living Constructions logo" class="logo-image" />
+        <span class="logo-text">
+          <span class="logo-primary">Inspired Living</span>
+          <span class="logo-sub">Constructions Inc.</span>
+        </span>
+      </a>
+
+      <div class="header-right">
+        <nav class="main-nav" id="main-nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="services.html" class="nav-link">Services</a>
+          <a href="portfolio.html" class="nav-link">Projects</a>
+          <a href="quote.html" class="nav-link">Quote</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <button class="theme-toggle" id="theme-toggle" type="button">
+          <span class="theme-icon" id="theme-icon">☀</span>
+          <span class="theme-label" id="theme-label">Light</span>
+        </button>
+
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero section-animated">
+      <div class="container">
+        <p class="eyebrow">Quote builder</p>
+        <h1>Get a detailed, PDF-ready estimate for your project.</h1>
+        <p class="hero-text">
+          Use this tool to share your project details. You’ll see an estimated range update in real time and can
+          download a professional estimate PDF to keep on file or email.
+        </p>
+      </div>
+    </section>
+
+    <!-- QUOTE LAYOUT -->
+    <section class="section section-animated">
+      <div class="container quote-layout">
+        <!-- FORM -->
+        <form class="card quote-form" id="quote-form">
+          <h2>Your project details</h2>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Full name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="service">Project type</label>
+              <select id="service" name="service" required>
+                <option value="">Select a project type</option>
+                <option value="basement">Basement development</option>
+                <option value="suite">Legal basement suite</option>
+                <option value="kitchen">Kitchen renovation</option>
+                <option value="bathroom">Bathroom renovation</option>
+                <option value="reno">Whole-home renovation</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="area">Approximate finished area (sq. ft.)</label>
+              <input type="number" id="area" name="area" min="0" step="10" placeholder="e.g., 750" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="finish-level">Finish level</label>
+            <select id="finish-level" name="finish-level">
+              <option value="standard">Standard: durable, rental-friendly finishes</option>
+              <option value="mid">Mid-range: upgraded finishes & fixtures</option>
+              <option value="premium">Premium: custom millwork & designer finishes</option>
+            </select>
+          </div>
+
+          <fieldset class="field">
+            <legend>Include additional work</legend>
+            <div class="checkbox-grid">
+              <label>
+                <input type="checkbox" name="extras" value="bathroom" />
+                Add full bathroom
+              </label>
+              <label>
+                <input type="checkbox" name="extras" value="kitchenette" />
+                Add kitchenette or wet bar
+              </label>
+              <label>
+                <input type="checkbox" name="extras" value="separate-entry" />
+                Separate entrance / egress changes
+              </label>
+              <label>
+                <input type="checkbox" name="extras" value="exterior" />
+                Exterior upgrades as part of project
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="notes">Anything else we should know?</label>
+            <textarea
+              id="notes"
+              name="notes"
+              rows="4"
+              placeholder="Timeline, special requests, existing issues, or photos you’d like us to review."
+            ></textarea>
+          </div>
+        </form>
+
+        <!-- SUMMARY -->
+        <aside class="card quote-summary">
+          <h2>Estimate summary</h2>
+
+          <div class="summary-row">
+            <p class="summary-label">Estimated range</p>
+            <p class="summary-value" id="summary-total">$0–$0</p>
+          </div>
+
+          <div class="summary-row">
+            <p class="summary-label">Project type</p>
+            <p class="summary-value" id="summary-type">Not selected</p>
+          </div>
+
+          <div class="summary-row">
+            <p class="summary-label">Approximate size</p>
+            <p class="summary-value" id="summary-area">0 sq. ft.</p>
+          </div>
+
+          <div class="summary-row">
+            <p class="summary-label">Finish level</p>
+            <p class="summary-value" id="summary-finish">Standard</p>
+          </div>
+
+          <div class="summary-list">
+            <p class="summary-label">Included extras</p>
+            <ul id="summary-extras"></ul>
+          </div>
+
+          <p class="summary-note">
+            This estimate is for planning only and may change after an on-site walkthrough, final design selections and
+            permit requirements.
+          </p>
+
+          <button class="btn btn-primary btn-full" type="button" id="download-pdf">
+            Download estimate as PDF
+          </button>
+
+          <p class="summary-footnote">
+            The PDF will include your details, project scope, estimate range and next steps in a bill-style layout.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/images/ilc-logo.png" alt="Inspired Living Constructions logo" class="logo-image" />
+        <div>
+          <p class="footer-title">Inspired Living Constructions</p>
+          <p class="footer-text">
+            Basement development, renovations and trades services across Calgary & surrounding areas.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-cols">
+        <div class="footer-col">
+          <p class="footer-heading">Navigation</p>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Projects</a>
+          <a href="quote.html">Quote</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-heading">Services</p>
+          <a href="services.html#basement">Basement development</a>
+          <a href="services.html#renovations">Home renovations</a>
+          <a href="services.html#trades">Electrical & trades</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-heading">Contact</p>
+          <p>Calgary, AB</p>
+          <p>
+            Phone:
+            <a href="tel:6043683331">604-368-3331</a>
+          </p>
+          <p>
+            Email:
+            <a href="mailto:dhillongagan566@gmail.com">dhillongagan566@gmail.com</a>
+          </p>
+        </div>
+      </div>
+
+      <p class="footer-meta">© 2025 Inspired Living Constructions Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Only this page loads the PDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
